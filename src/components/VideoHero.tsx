@@ -18,7 +18,7 @@ export default function VideoHero() {
             </video>
 
             {/* Overlay Content */}
-            <div className="relative z-10 w-full h-full flex flex-col items-center justify-center text-center text-white px-4">
+            <div className="relative z-10 w-full h-full flex flex-col items-center justify-end text-center text-white px-4 pb-32">
                 {/* Text Removed */}
 
                 <motion.div
