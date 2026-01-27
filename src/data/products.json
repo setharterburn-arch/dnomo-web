@@ -1,0 +1,51 @@
+[
+  {
+    "id": "dnomo-magsafe-compatible-system",
+    "name": "DNOMO Mag Safe Compatible System",
+    "price": 89.95,
+    "image": "/images/dnomo-magsafe-compatible-system.webp",
+    "url": "https://dnomousa.com/product/dnomo-magsafe-compatible-system-kit/"
+  },
+  {
+    "id": "dnomo-system",
+    "name": "DNOMO® System",
+    "price": 69.95,
+    "image": "/images/dnomo-system.webp",
+    "url": "https://dnomousa.com/product/dnomo-system/"
+  },
+  {
+    "id": "magsafe-compatible-starter-pack",
+    "name": "Mag Safe Compatible Starter Pack",
+    "price": 59.95,
+    "image": "/images/magsafe-compatible-starter-pack.webp",
+    "url": "https://dnomousa.com/product/magsafe-compatible-dnomo-wallet-starter-pack/"
+  },
+  {
+    "id": "dnomo-starter-pack",
+    "name": "DNOMO Starter Pack",
+    "price": 39.95,
+    "image": "/images/dnomo-starter-pack.webp",
+    "url": "https://dnomousa.com/product/dnomo-starter-pack/"
+  },
+  {
+    "id": "3-pack-magnetic-buttons",
+    "name": "3 Pack Magnetic Buttons",
+    "price": 24.95,
+    "image": "/images/3-pack-magnetic-buttons.webp",
+    "url": "https://dnomousa.com/product/3-pack-magnetic-buttons/"
+  },
+  {
+    "id": "magnetic-key-fob",
+    "name": "Magnetic Key Fob",
+    "price": 19.95,
+    "image": "/images/magnetic-key-fob.webp",
+    "url": "https://dnomousa.com/product/magnetic-key-fob/"
+  },
+  {
+    "id": "dnomo-magnetic-charging-kit",
+    "name": "DNOMO Magnetic Charging Kit",
+    "price": 14.95,
+    "image": "/images/dnomo-magnetic-charging-kit.webp",
+    "url": "https://dnomousa.com/product/dnomo-magnetic-charging-kit/"
+  }
+]
