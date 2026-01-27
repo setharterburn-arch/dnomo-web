@@ -19,25 +19,7 @@ export default function VideoHero() {
 
             {/* Overlay Content */}
             <div className="relative z-10 w-full h-full flex flex-col items-center justify-center text-center text-white px-4">
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.3 }}
-                >
-                    <h1 className="text-5xl md:text-8xl font-black tracking-tighter uppercase mb-6">
-                        Take Control
-                    </h1>
-                </motion.div>
-
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.5 }}
-                >
-                    <p className="text-xl md:text-2xl font-light tracking-widest uppercase mb-10 text-gray-200">
-                        All Day. Every Day.
-                    </p>
-                </motion.div>
+                {/* Text Removed */}
 
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
