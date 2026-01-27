@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
-export const dynamic = 'force_dynamic';
+export const dynamic = 'force-dynamic';
 
 export async function POST(req: Request) {
     try {
