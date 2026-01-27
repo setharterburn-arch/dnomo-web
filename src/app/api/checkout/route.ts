@@ -1,14 +1,18 @@
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
-export const dynamic = 'force-dynamic';
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_dummy', {
-    typescript: true,
-});
+export const dynamic = 'force_dynamic';
 
 export async function POST(req: Request) {
     try {
+        const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
+            typescript: true,
+        });
+
+        if (!process.env.STRIPE_SECRET_KEY) {
+            throw new Error('Missing STRIPE_SECRET_KEY');
+        }
+
         const { items } = await req.json();
 
         if (!items || items.length === 0) {
