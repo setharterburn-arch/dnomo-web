@@ -31,7 +31,7 @@ export async function POST(req: Request) {
             cancel_url: `${req.headers.get('origin')}/?canceled=true`,
         });
 
-        return NextResponse.json({ sessionId: session.id });
+        return NextResponse.json({ sessionId: session.id, url: session.url });
     } catch (err: any) {
         console.error(err);
         return new NextResponse('Internal Error', { status: 500 });

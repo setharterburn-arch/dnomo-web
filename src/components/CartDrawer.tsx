@@ -5,19 +5,10 @@ import { X, Minus, Plus, ShoppingBag } from 'lucide-react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 
-import { loadStripe } from '@stripe/stripe-js';
-
-const stripeKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
-const stripePromise = stripeKey ? loadStripe(stripeKey) : null;
-
 export default function CartDrawer() {
     const { items, isOpen, closeCart, removeItem, updateQuantity, subtotal } = useCart();
 
     const handleCheckout = async () => {
-        if (!stripePromise) {
-            alert('Stripe Setup Required: Please add NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY to your .env.local file.');
-            return;
-        }
 
         try {
             const response = await fetch('/api/checkout', {
@@ -28,10 +19,11 @@ export default function CartDrawer() {
                 body: JSON.stringify({ items }),
             });
 
-            const { sessionId } = await response.json();
-            const stripe = await stripePromise;
-            if (stripe) {
-                await stripe.redirectToCheckout({ sessionId });
+            const { url } = await response.json();
+            if (url) {
+                window.location.href = url;
+            } else {
+                throw new Error('No checkout URL returned');
             }
         } catch (error) {
             console.error('Checkout failed:', error);
