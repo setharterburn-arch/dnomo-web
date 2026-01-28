@@ -23,3 +23,26 @@ export async function getProductById(id: string): Promise<Product | undefined> {
     const r = rows[0];
     return { ...r, features: r.features || [], gallery: r.gallery || [] };
 }
+
+export async function createProduct(product: Product): Promise<void> {
+    noStore();
+    await pool.query(
+        `INSERT INTO products (id, name, price, image, url, description, features, gallery)
+     VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`,
+        [
+            product.id,
+            product.name,
+            product.price,
+            product.image,
+            product.url,
+            product.description,
+            JSON.stringify(product.features),
+            JSON.stringify(product.gallery)
+        ]
+    );
+}
+
+export async function deleteProduct(id: string): Promise<void> {
+    noStore();
+    await pool.query('DELETE FROM products WHERE id = $1', [id]);
+}
