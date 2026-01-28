@@ -4,48 +4,104 @@
     "name": "DNOMO Mag Safe Compatible System",
     "price": 89.95,
     "image": "/images/dnomo-magsafe-compatible-system.webp",
-    "url": "https://dnomousa.com/product/dnomo-magsafe-compatible-system-kit/"
+    "url": "https://dnomousa.com/product/dnomo-magsafe-compatible-system-kit/",
+    "description": "The DNOMO® is the ultimate all-in-one solution for your phone, wallet, and keys. Designed for convenience and versatility, it combines a sleek, anti-slip wallet with a flexible magnetic grip, allowing you to attach, stand, and carry your essentials with ease. Whether you’re at home, in the car, or on the go, the DNOMO® keeps your essentials within reach and organized.",
+    "features": [
+      "Anti Slip Wallet",
+      "Flexible Magnetic Grip",
+      "Horizontal stand / Vertical stand",
+      "Attachment System (Mounts/Clips Anywhere)",
+      "Magnetic Key Fob",
+      "Universal Magnetic Charger (One Wire, 3 Ports)",
+      "Universal (Fits Most Phones/Cases)",
+      "RFID Blocking card included"
+    ]
   },
   {
     "id": "dnomo-system",
     "name": "DNOMO® System",
     "price": 69.95,
     "image": "/images/dnomo-system.webp",
-    "url": "https://dnomousa.com/product/dnomo-system/"
+    "url": "https://dnomousa.com/product/dnomo-system/",
+    "description": "DNOMO® Attachment system will fit on most non-flip phones & cases. It is transferable so if you change phones or cases you can reattach the DNOMO® to the new phone or case.",
+    "features": [
+      "Anti Slip Wallet",
+      "Flexible Magnetic Grip",
+      "Horizontal stand / Vertical stand",
+      "Attachment System (Mounts/Clips Anywhere)",
+      "Magnetic Key Fob",
+      "Universal Magnetic Charger (One Wire, 3 Ports)",
+      "Universal (Fits Most Phones/Cases)"
+    ]
   },
   {
     "id": "magsafe-compatible-starter-pack",
     "name": "Mag Safe Compatible Starter Pack",
     "price": 59.95,
     "image": "/images/magsafe-compatible-starter-pack.webp",
-    "url": "https://dnomousa.com/product/magsafe-compatible-dnomo-wallet-starter-pack/"
+    "url": "https://dnomousa.com/product/magsafe-compatible-dnomo-wallet-starter-pack/",
+    "description": "DNOMO is an accessory that attaches to most smart phones. The mag safe compatible wallet holds up to 5 cards, with RFID blocker and has a clip that allows you to attach it to your waist without the support of a holster or belt. It also has a magnetic grip with built in mirror.",
+    "features": [
+      "Mag safe compatible wallet holds up to 5 cards",
+      "RFID blocker",
+      "Clip for waist attachment",
+      "Magnetic grip with built-in mirror",
+      "Horizontal and Vertical stand",
+      "Includes 1 peel and stick magnetic button",
+      "Includes Magnetic Key Fob"
+    ]
   },
   {
     "id": "dnomo-starter-pack",
     "name": "DNOMO Starter Pack",
     "price": 39.95,
     "image": "/images/dnomo-starter-pack.webp",
-    "url": "https://dnomousa.com/product/dnomo-starter-pack/"
+    "url": "https://dnomousa.com/product/dnomo-starter-pack/",
+    "description": "DNOMO is an accessory that attaches to most smart phones. The wallet holds up to 5 cards and has a clip that allows you to attach it to your waist without the support of a holster or belt and to your purse. It also has a magnetic grip that makes it easier to hold your phone.",
+    "features": [
+      "Magnetic Key Fob",
+      "Single Magnetic Button",
+      "Wallet with Magnetic Grip",
+      "RFID Card"
+    ]
   },
   {
     "id": "3-pack-magnetic-buttons",
     "name": "3 Pack Magnetic Buttons",
     "price": 24.95,
     "image": "/images/3-pack-magnetic-buttons.webp",
-    "url": "https://dnomousa.com/product/3-pack-magnetic-buttons/"
+    "url": "https://dnomousa.com/product/3-pack-magnetic-buttons/",
+    "description": "Peel and stick Magnetic Buttons that adheres to any flat surface. It allows you to attach your phone/wallet/key or your keys separately anywhere and view your phone hands free.",
+    "features": [
+      "3 Pack Magnetic Buttons",
+      "Adheres to any flat surface",
+      "Hands-free viewing"
+    ]
   },
   {
     "id": "magnetic-key-fob",
     "name": "Magnetic Key Fob",
     "price": 19.95,
     "image": "/images/magnetic-key-fob.webp",
-    "url": "https://dnomousa.com/product/magnetic-key-fob/"
+    "url": "https://dnomousa.com/product/magnetic-key-fob/",
+    "description": "Magnetic Key Fob that sticks to any metal. Combine it with the DNOMO wallet it will attach to the Magnetic Grip to create the DNOMO Phone, Wallet, Key Solution.",
+    "features": [
+      "Sticks to any metal",
+      "Compatible with DNOMO Wallet",
+      "Secure key attachment"
+    ]
   },
   {
     "id": "dnomo-magnetic-charging-kit",
     "name": "DNOMO Magnetic Charging Kit",
     "price": 14.95,
     "image": "/images/dnomo-magnetic-charging-kit.webp",
-    "url": "https://dnomousa.com/product/dnomo-magnetic-charging-kit/"
+    "url": "https://dnomousa.com/product/dnomo-magnetic-charging-kit/",
+    "description": "1 3ft USB charging magnetic cable, tip swivels and illuminates. 3 Magnetic Ports.",
+    "features": [
+      "1 3ft USB charging magnetic cable",
+      "Tip swivels and illuminates",
+      "3 Magnetic Ports (USB-C, Lightning, Micro-USB)"
+    ]
   }
 ]

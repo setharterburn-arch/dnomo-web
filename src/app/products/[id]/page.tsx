@@ -49,15 +49,13 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
                         <div className="prose prose-lg text-gray-700 mb-12">
                             <p>
-                                Experience total control with the {product.name}. Designed for the modern lifestyle,
-                                blending minimal aesthetics with maximum utility.
-                                Built with premium materials to last all day, every day.
+                                {product.description || `Experience total control with the ${product.name}. Designed for the modern lifestyle, blending minimal aesthetics with maximum utility. Built with premium materials to last all day, every day.`}
                             </p>
                         </div>
 
                         <div className="space-y-4 mb-12">
-                            {['Premium Build Quality', 'Magnetic Compatibility', '1 Year Warranty'].map((feature) => (
-                                <div key={feature} className="flex items-center text-sm font-bold uppercase tracking-wide">
+                            {(product.features?.length ? product.features : ['Premium Build Quality', 'Magnetic Compatibility', '1 Year Warranty']).map((feature, i) => (
+                                <div key={i} className="flex items-center text-sm font-bold uppercase tracking-wide">
                                     <div className="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center mr-3">
                                         <Check className="w-3 h-3" />
                                     </div>
