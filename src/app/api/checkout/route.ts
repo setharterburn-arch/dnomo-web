@@ -19,27 +19,36 @@ export async function POST(req: Request) {
             return new NextResponse('No items in cart', { status: 400 });
         }
 
+        const origin = req.headers.get('origin') || 'https://dnomo-web.vercel.app';
+
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
-            line_items: items.map((item: any) => ({
-                price_data: {
-                    currency: 'usd',
-                    product_data: {
-                        name: item.name,
-                        images: [item.image],
+            line_items: items.map((item: any) => {
+                // Ensure image is an absolute URL
+                const imageUrl = item.image.startsWith('http')
+                    ? item.image
+                    : `${origin}${item.image}`;
+
+                return {
+                    price_data: {
+                        currency: 'usd',
+                        product_data: {
+                            name: item.name,
+                            images: [imageUrl],
+                        },
+                        unit_amount: Math.round(item.price * 100),
                     },
-                    unit_amount: Math.round(item.price * 100),
-                },
-                quantity: item.quantity,
-            })),
+                    quantity: item.quantity,
+                };
+            }),
             mode: 'payment',
-            success_url: `${req.headers.get('origin')}/success?session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: `${req.headers.get('origin')}/?canceled=true`,
+            success_url: `${origin}/success?session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url: `${origin}/?canceled=true`,
         });
 
         return NextResponse.json({ sessionId: session.id, url: session.url });
     } catch (err: any) {
-        console.error(err);
-        return new NextResponse('Internal Error', { status: 500 });
+        console.error('Stripe Wrapper Error:', err);
+        return new NextResponse(`Stripe Error: ${err.message}`, { status: 500 });
     }
 }
