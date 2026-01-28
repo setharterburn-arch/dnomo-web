@@ -21,14 +21,9 @@ export default function RootLayout({
     return (
         <html lang="en" className="bg-black text-white">
             <body className={inter.className}>
-                <CartProvider>
-                    <Navbar />
-                    <CartDrawer />
-                    <main className="min-h-screen">
-                        {children}
-                    </main>
-                    <Footer />
-                </CartProvider>
+                <main className="min-h-screen">
+                    {children}
+                </main>
             </body>
         </html>
     );
