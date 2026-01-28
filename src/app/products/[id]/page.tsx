@@ -6,7 +6,7 @@ import { ChevronLeft, Check } from 'lucide-react';
 import AddToCartButton from '@/components/AddToCartButton';
 
 export async function generateStaticParams() {
-    const products = getAllProducts();
+    const products = await getAllProducts();
     return products.map((product) => ({
         id: product.id,
     }));
@@ -16,7 +16,7 @@ export const dynamicParams = false;
 
 export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;
-    const product = getProductById(id);
+    const product = await getProductById(id);
 
     if (!product) {
         notFound();
