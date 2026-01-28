@@ -19,15 +19,20 @@ export default function CartDrawer() {
                 body: JSON.stringify({ items }),
             });
 
+            if (!response.ok) {
+                const errText = await response.text();
+                throw new Error(errText || 'Checkout API failed');
+            }
+
             const { url } = await response.json();
             if (url) {
                 window.location.href = url;
             } else {
                 throw new Error('No checkout URL returned');
             }
-        } catch (error) {
+        } catch (error: any) {
             console.error('Checkout failed:', error);
-            alert('Checkout failed. See console for details.');
+            alert(`Checkout failed: ${error.message || 'Unknown error'}`);
         }
     };
 

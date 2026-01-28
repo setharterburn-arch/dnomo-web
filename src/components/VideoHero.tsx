@@ -27,7 +27,7 @@ export default function VideoHero() {
                     transition={{ duration: 0.8, delay: 0.7 }}
                 >
                     <Link
-                        href="/shop"
+                        href="/#shop"
                         className="px-8 py-4 bg-white text-black font-bold uppercase tracking-widest hover:bg-transparent hover:text-white hover:border hover:border-white transition-all duration-300"
                     >
                         Shop Now
