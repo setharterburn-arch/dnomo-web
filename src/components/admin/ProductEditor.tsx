@@ -187,7 +187,7 @@ export default function ProductEditor({ product: initialProduct, isNew = false }
             </header>
 
             <main className="container mx-auto py-8 px-6 max-w-4xl">
-                <h1 className="text-2xl font-bold mb-8">
+                <h1 className="text-2xl font-bold mb-8 text-gray-900">
                     {isNew ? 'Add New Product' : `Edit: ${product.name}`}
                 </h1>
 
@@ -200,55 +200,55 @@ export default function ProductEditor({ product: initialProduct, isNew = false }
                 <div className="space-y-6">
                     {/* Basic Info */}
                     <div className="bg-white rounded-lg shadow p-6">
-                        <h2 className="text-lg font-bold mb-4">Basic Information</h2>
+                        <h2 className="text-lg font-bold mb-4 text-gray-900">Basic Information</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <label className="block text-sm font-medium mb-2">Product Name *</label>
+                                <label className="block text-sm font-semibold mb-2 text-gray-700">Product Name *</label>
                                 <input
                                     type="text"
                                     value={product.name}
                                     onChange={(e) => setProduct({ ...product, name: e.target.value })}
-                                    className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-black focus:outline-none"
+                                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:outline-none text-gray-900"
                                     required
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium mb-2">Price *</label>
+                                <label className="block text-sm font-semibold mb-2 text-gray-700">Price *</label>
                                 <input
                                     type="number"
                                     step="0.01"
                                     value={product.price}
                                     onChange={(e) => setProduct({ ...product, price: parseFloat(e.target.value) || 0 })}
-                                    className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-black focus:outline-none"
+                                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:outline-none text-gray-900"
                                     required
                                 />
                             </div>
                             <div className="md:col-span-2">
-                                <label className="block text-sm font-medium mb-2">External URL (optional)</label>
+                                <label className="block text-sm font-semibold mb-2 text-gray-700">External URL (optional)</label>
                                 <input
                                     type="url"
                                     value={product.url || ''}
                                     onChange={(e) => setProduct({ ...product, url: e.target.value || null })}
-                                    className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-black focus:outline-none"
+                                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:outline-none text-gray-900 placeholder-gray-400"
                                     placeholder="https://..."
                                 />
                             </div>
                             <div className="md:col-span-2">
-                                <label className="block text-sm font-medium mb-2">Description</label>
+                                <label className="block text-sm font-semibold mb-2 text-gray-700">Description</label>
                                 <textarea
                                     value={product.description || ''}
                                     onChange={(e) => setProduct({ ...product, description: e.target.value || null })}
-                                    className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-black focus:outline-none"
+                                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:outline-none text-gray-900"
                                     rows={4}
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium mb-2">Sort Order</label>
+                                <label className="block text-sm font-semibold mb-2 text-gray-700">Sort Order</label>
                                 <input
                                     type="number"
                                     value={product.sort_order}
                                     onChange={(e) => setProduct({ ...product, sort_order: parseInt(e.target.value) || 0 })}
-                                    className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-black focus:outline-none"
+                                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:outline-none text-gray-900"
                                 />
                             </div>
                             <div className="flex items-center gap-4 pt-8">
@@ -259,7 +259,7 @@ export default function ProductEditor({ product: initialProduct, isNew = false }
                                         onChange={(e) => setProduct({ ...product, active: e.target.checked })}
                                         className="w-5 h-5"
                                     />
-                                    <span className="font-medium">Active (visible on site)</span>
+                                    <span className="font-semibold text-gray-700">Active (visible on site)</span>
                                 </label>
                             </div>
                         </div>
@@ -267,7 +267,7 @@ export default function ProductEditor({ product: initialProduct, isNew = false }
 
                     {/* Main Image */}
                     <div className="bg-white rounded-lg shadow p-6">
-                        <h2 className="text-lg font-bold mb-4">Main Image</h2>
+                        <h2 className="text-lg font-bold mb-4 text-gray-900">Main Image</h2>
                         <div className="flex items-start gap-4">
                             {product.image && (
                                 <div className="relative">
@@ -295,14 +295,14 @@ export default function ProductEditor({ product: initialProduct, isNew = false }
                                 <button
                                     onClick={() => fileInputRef.current?.click()}
                                     disabled={uploading}
-                                    className="border-2 border-dashed border-gray-300 rounded-lg p-6 hover:border-black transition-colors flex flex-col items-center gap-2"
+                                    className="border-2 border-dashed border-gray-300 rounded-lg p-6 hover:border-black transition-colors flex flex-col items-center gap-2 text-gray-700"
                                 >
                                     {uploading ? (
                                         <Loader2 className="w-8 h-8 animate-spin" />
                                     ) : (
                                         <Upload className="w-8 h-8" />
                                     )}
-                                    <span>{uploading ? 'Uploading...' : 'Upload Image'}</span>
+                                    <span className="font-medium">{uploading ? 'Uploading...' : 'Upload Image'}</span>
                                 </button>
                             </div>
                         </div>
@@ -310,11 +310,11 @@ export default function ProductEditor({ product: initialProduct, isNew = false }
 
                     {/* Features */}
                     <div className="bg-white rounded-lg shadow p-6">
-                        <h2 className="text-lg font-bold mb-4">Features</h2>
+                        <h2 className="text-lg font-bold mb-4 text-gray-900">Features</h2>
                         <div className="space-y-2 mb-4">
                             {product.features?.map((feature, i) => (
                                 <div key={i} className="flex items-center gap-2 bg-gray-100 p-2 rounded">
-                                    <span className="flex-1">{feature}</span>
+                                    <span className="flex-1 text-gray-900">{feature}</span>
                                     <button
                                         onClick={() => removeFeature(i)}
                                         className="text-red-500 hover:text-red-700"
@@ -331,7 +331,7 @@ export default function ProductEditor({ product: initialProduct, isNew = false }
                                 onChange={(e) => setNewFeature(e.target.value)}
                                 onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), addFeature())}
                                 placeholder="Add a feature..."
-                                className="flex-1 p-3 border rounded-lg focus:ring-2 focus:ring-black focus:outline-none"
+                                className="flex-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:outline-none text-gray-900 placeholder-gray-400"
                             />
                             <button
                                 onClick={addFeature}
@@ -344,7 +344,7 @@ export default function ProductEditor({ product: initialProduct, isNew = false }
 
                     {/* Gallery */}
                     <div className="bg-white rounded-lg shadow p-6">
-                        <h2 className="text-lg font-bold mb-4">Gallery Images</h2>
+                        <h2 className="text-lg font-bold mb-4 text-gray-900">Gallery Images</h2>
                         <div className="flex flex-wrap gap-4 mb-4">
                             {product.gallery?.map((img, i) => (
                                 <div key={i} className="relative">
@@ -373,7 +373,7 @@ export default function ProductEditor({ product: initialProduct, isNew = false }
                                 <button
                                     onClick={() => galleryInputRef.current?.click()}
                                     disabled={uploading}
-                                    className="w-24 h-24 border-2 border-dashed border-gray-300 rounded-lg hover:border-black transition-colors flex flex-col items-center justify-center"
+                                    className="w-24 h-24 border-2 border-dashed border-gray-300 rounded-lg hover:border-black transition-colors flex flex-col items-center justify-center text-gray-700"
                                 >
                                     {uploading ? (
                                         <Loader2 className="w-6 h-6 animate-spin" />
@@ -387,7 +387,7 @@ export default function ProductEditor({ product: initialProduct, isNew = false }
 
                     {/* Video */}
                     <div className="bg-white rounded-lg shadow p-6">
-                        <h2 className="text-lg font-bold mb-4">Product Video</h2>
+                        <h2 className="text-lg font-bold mb-4 text-gray-900">Product Video</h2>
                         {product.video_url ? (
                             <div className="relative inline-block">
                                 <video
@@ -414,14 +414,14 @@ export default function ProductEditor({ product: initialProduct, isNew = false }
                                 <button
                                     onClick={() => videoInputRef.current?.click()}
                                     disabled={uploading}
-                                    className="border-2 border-dashed border-gray-300 rounded-lg p-6 hover:border-black transition-colors flex flex-col items-center gap-2"
+                                    className="border-2 border-dashed border-gray-300 rounded-lg p-6 hover:border-black transition-colors flex flex-col items-center gap-2 text-gray-700"
                                 >
                                     {uploading ? (
                                         <Loader2 className="w-8 h-8 animate-spin" />
                                     ) : (
                                         <Upload className="w-8 h-8" />
                                     )}
-                                    <span>{uploading ? 'Uploading...' : 'Upload Video'}</span>
+                                    <span className="font-medium">{uploading ? 'Uploading...' : 'Upload Video'}</span>
                                 </button>
                             </div>
                         )}
