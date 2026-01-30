@@ -3,7 +3,8 @@
 import { useAdmin } from '@/context/AdminContext';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Package, Plus, LogOut, Edit, Trash2, Eye, EyeOff } from 'lucide-react';
+import { Package, Plus, LogOut, Edit, Trash2, Eye, EyeOff, Image } from 'lucide-react';
+import MediaManager from '@/components/admin/MediaManager';
 
 interface Product {
     id: string;
@@ -22,6 +23,7 @@ export default function AdminPage() {
     const [loginLoading, setLoginLoading] = useState(false);
     const [products, setProducts] = useState<Product[]>([]);
     const [productsLoading, setProductsLoading] = useState(true);
+    const [activeTab, setActiveTab] = useState<'products' | 'media'>('products');
 
     useEffect(() => {
         if (isAuthenticated) {
@@ -157,6 +159,36 @@ export default function AdminPage() {
 
             {/* Main Content */}
             <main className="container mx-auto py-8 px-6">
+                {/* Tabs */}
+                <div className="flex gap-4 mb-8 border-b">
+                    <button
+                        onClick={() => setActiveTab('products')}
+                        className={`flex items-center gap-2 px-4 py-3 font-bold transition-colors border-b-2 -mb-px ${
+                            activeTab === 'products'
+                                ? 'text-black border-black'
+                                : 'text-gray-500 border-transparent hover:text-gray-700'
+                        }`}
+                    >
+                        <Package className="w-5 h-5" />
+                        Products
+                    </button>
+                    <button
+                        onClick={() => setActiveTab('media')}
+                        className={`flex items-center gap-2 px-4 py-3 font-bold transition-colors border-b-2 -mb-px ${
+                            activeTab === 'media'
+                                ? 'text-black border-black'
+                                : 'text-gray-500 border-transparent hover:text-gray-700'
+                        }`}
+                    >
+                        <Image className="w-5 h-5" />
+                        Media Library
+                    </button>
+                </div>
+
+                {activeTab === 'media' ? (
+                    <MediaManager />
+                ) : (
+                <>
                 <div className="flex justify-between items-center mb-8">
                     <h2 className="text-2xl font-bold flex items-center gap-2 text-gray-900">
                         <Package className="w-6 h-6" />
@@ -237,6 +269,8 @@ export default function AdminPage() {
                             </tbody>
                         </table>
                     </div>
+                )}
+                </>
                 )}
             </main>
         </div>
