@@ -43,13 +43,12 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ error: error.message }, { status: 500 });
         }
 
-        // Get public URL
-        const { data: urlData } = supabase.storage
-            .from('product-media')
-            .getPublicUrl(data.path);
+        // Return proxied URL through our API (avoids mixed content issues)
+        // Instead of http://ip:8000/storage/... we return /api/media/...
+        const proxiedUrl = `/api/media/${data.path}`;
 
         return NextResponse.json({ 
-            url: urlData.publicUrl,
+            url: proxiedUrl,
             path: data.path 
         });
     } catch (error) {
