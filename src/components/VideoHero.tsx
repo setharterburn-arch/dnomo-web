@@ -14,7 +14,7 @@ export default function VideoHero() {
                 playsInline
                 className="absolute top-0 left-0 w-full h-full object-cover opacity-60"
             >
-                <source src="/videos/hero.mp4" type="video/mp4" />
+                <source src="/videos/hero.mp4?v=2" type="video/mp4" />
             </video>
 
             {/* Overlay Content */}
