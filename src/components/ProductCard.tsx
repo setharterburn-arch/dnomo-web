@@ -32,13 +32,15 @@ export default function ProductCard({ product, index }: ProductCardProps) {
         >
             <Link href={`/products/${product.id}`} className="block">
                 <div className="relative aspect-square overflow-hidden bg-gray-900 rounded-lg mb-4">
-                    <Image
-                        src={product.image}
-                        alt={product.name}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
+                    {product.image && (
+                        <Image
+                            src={product.image}
+                            alt={product.name}
+                            fill
+                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        />
+                    )}
 
                     {/* Specific minimalist overlay effect */}
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />

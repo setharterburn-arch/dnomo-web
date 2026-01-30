@@ -1,12 +1,12 @@
 import VideoHero from '@/components/VideoHero';
 import ProductGrid from '@/components/ProductGrid';
-import productsData from '@/data/products.json';
-import { Product } from '@/types/product';
+import { getAllProducts } from '@/lib/products';
 
-// Simulate fetching data
-const products: Product[] = productsData as Product[];
+export const revalidate = 60; // Revalidate every 60 seconds
 
-export default function Home() {
+export default async function Home() {
+    const products = await getAllProducts();
+
     return (
         <div>
             <VideoHero />

@@ -1,10 +1,33 @@
-import products from '@/data/products.json';
+import { supabase } from './supabase';
 import { Product } from '@/types/product';
 
-export function getAllProducts(): Product[] {
-    return products as Product[];
+export async function getAllProducts(): Promise<Product[]> {
+    const { data, error } = await supabase
+        .from('products')
+        .select('*')
+        .eq('active', true)
+        .order('sort_order', { ascending: true });
+    
+    if (error) {
+        console.error('Error fetching products:', error);
+        return [];
+    }
+    
+    return data || [];
 }
 
-export function getProductById(id: string): Product | undefined {
-    return (products as Product[]).find(p => p.id === id);
+export async function getProductById(id: string): Promise<Product | null> {
+    const { data, error } = await supabase
+        .from('products')
+        .select('*')
+        .eq('id', id)
+        .eq('active', true)
+        .single();
+    
+    if (error) {
+        console.error('Error fetching product:', error);
+        return null;
+    }
+    
+    return data;
 }

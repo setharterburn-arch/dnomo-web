@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { ShoppingBag } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
 import { useCart } from '@/context/CartContext';
 
@@ -10,12 +11,20 @@ export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
     const { openCart, items } = useCart();
     const cartCount = items.reduce((sum, item) => sum + item.quantity, 0);
+    const pathname = usePathname();
+    const isAdmin = pathname?.startsWith('/admin');
 
     useEffect(() => {
+        if (isAdmin) return;
         const handleScroll = () => setScrolled(window.scrollY > 50);
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    }, [isAdmin]);
+
+    // Hide navbar on admin pages
+    if (isAdmin) {
+        return null;
+    }
 
     return (
         <nav
