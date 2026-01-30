@@ -2,8 +2,9 @@
 
 import { useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import { Upload, X, Plus, ArrowLeft, Save, Loader2 } from 'lucide-react';
+import { Upload, X, Plus, ArrowLeft, Save, Loader2, FolderOpen } from 'lucide-react';
 import Link from 'next/link';
+import MediaPicker from './MediaPicker';
 
 interface Product {
     id?: string;
@@ -47,6 +48,11 @@ export default function ProductEditor({ product: initialProduct, isNew = false }
     const fileInputRef = useRef<HTMLInputElement>(null);
     const galleryInputRef = useRef<HTMLInputElement>(null);
     const videoInputRef = useRef<HTMLInputElement>(null);
+    
+    // Media picker state
+    const [showImagePicker, setShowImagePicker] = useState(false);
+    const [showGalleryPicker, setShowGalleryPicker] = useState(false);
+    const [showVideoPicker, setShowVideoPicker] = useState(false);
 
     async function uploadFile(file: File, folder: string): Promise<string | null> {
         const formData = new FormData();
@@ -268,7 +274,7 @@ export default function ProductEditor({ product: initialProduct, isNew = false }
                     {/* Main Image */}
                     <div className="bg-white rounded-lg shadow p-6">
                         <h2 className="text-lg font-bold mb-4 text-gray-900">Main Image</h2>
-                        <div className="flex items-start gap-4">
+                        <div className="flex items-start gap-4 flex-wrap">
                             {product.image && (
                                 <div className="relative">
                                     <img
@@ -284,7 +290,7 @@ export default function ProductEditor({ product: initialProduct, isNew = false }
                                     </button>
                                 </div>
                             )}
-                            <div>
+                            <div className="flex gap-2">
                                 <input
                                     ref={fileInputRef}
                                     type="file"
@@ -295,14 +301,21 @@ export default function ProductEditor({ product: initialProduct, isNew = false }
                                 <button
                                     onClick={() => fileInputRef.current?.click()}
                                     disabled={uploading}
-                                    className="border-2 border-dashed border-gray-300 rounded-lg p-6 hover:border-black transition-colors flex flex-col items-center gap-2 text-gray-700"
+                                    className="border-2 border-dashed border-gray-300 rounded-lg p-4 hover:border-black transition-colors flex flex-col items-center gap-2 text-gray-700"
                                 >
                                     {uploading ? (
-                                        <Loader2 className="w-8 h-8 animate-spin" />
+                                        <Loader2 className="w-6 h-6 animate-spin" />
                                     ) : (
-                                        <Upload className="w-8 h-8" />
+                                        <Upload className="w-6 h-6" />
                                     )}
-                                    <span className="font-medium">{uploading ? 'Uploading...' : 'Upload Image'}</span>
+                                    <span className="font-medium text-sm">{uploading ? 'Uploading...' : 'Upload New'}</span>
+                                </button>
+                                <button
+                                    onClick={() => setShowImagePicker(true)}
+                                    className="border-2 border-dashed border-gray-300 rounded-lg p-4 hover:border-black transition-colors flex flex-col items-center gap-2 text-gray-700"
+                                >
+                                    <FolderOpen className="w-6 h-6" />
+                                    <span className="font-medium text-sm">From Library</span>
                                 </button>
                             </div>
                         </div>
@@ -361,7 +374,7 @@ export default function ProductEditor({ product: initialProduct, isNew = false }
                                     </button>
                                 </div>
                             ))}
-                            <div>
+                            <div className="flex gap-2">
                                 <input
                                     ref={galleryInputRef}
                                     type="file"
@@ -374,12 +387,24 @@ export default function ProductEditor({ product: initialProduct, isNew = false }
                                     onClick={() => galleryInputRef.current?.click()}
                                     disabled={uploading}
                                     className="w-24 h-24 border-2 border-dashed border-gray-300 rounded-lg hover:border-black transition-colors flex flex-col items-center justify-center text-gray-700"
+                                    title="Upload new"
                                 >
                                     {uploading ? (
                                         <Loader2 className="w-6 h-6 animate-spin" />
                                     ) : (
-                                        <Plus className="w-6 h-6" />
+                                        <>
+                                            <Upload className="w-5 h-5" />
+                                            <span className="text-xs mt-1">Upload</span>
+                                        </>
                                     )}
+                                </button>
+                                <button
+                                    onClick={() => setShowGalleryPicker(true)}
+                                    className="w-24 h-24 border-2 border-dashed border-gray-300 rounded-lg hover:border-black transition-colors flex flex-col items-center justify-center text-gray-700"
+                                    title="Select from library"
+                                >
+                                    <FolderOpen className="w-5 h-5" />
+                                    <span className="text-xs mt-1">Library</span>
                                 </button>
                             </div>
                         </div>
@@ -403,7 +428,7 @@ export default function ProductEditor({ product: initialProduct, isNew = false }
                                 </button>
                             </div>
                         ) : (
-                            <div>
+                            <div className="flex gap-2">
                                 <input
                                     ref={videoInputRef}
                                     type="file"
@@ -414,20 +439,49 @@ export default function ProductEditor({ product: initialProduct, isNew = false }
                                 <button
                                     onClick={() => videoInputRef.current?.click()}
                                     disabled={uploading}
-                                    className="border-2 border-dashed border-gray-300 rounded-lg p-6 hover:border-black transition-colors flex flex-col items-center gap-2 text-gray-700"
+                                    className="border-2 border-dashed border-gray-300 rounded-lg p-4 hover:border-black transition-colors flex flex-col items-center gap-2 text-gray-700"
                                 >
                                     {uploading ? (
-                                        <Loader2 className="w-8 h-8 animate-spin" />
+                                        <Loader2 className="w-6 h-6 animate-spin" />
                                     ) : (
-                                        <Upload className="w-8 h-8" />
+                                        <Upload className="w-6 h-6" />
                                     )}
-                                    <span className="font-medium">{uploading ? 'Uploading...' : 'Upload Video'}</span>
+                                    <span className="font-medium text-sm">{uploading ? 'Uploading...' : 'Upload New'}</span>
+                                </button>
+                                <button
+                                    onClick={() => setShowVideoPicker(true)}
+                                    className="border-2 border-dashed border-gray-300 rounded-lg p-4 hover:border-black transition-colors flex flex-col items-center gap-2 text-gray-700"
+                                >
+                                    <FolderOpen className="w-6 h-6" />
+                                    <span className="font-medium text-sm">From Library</span>
                                 </button>
                             </div>
                         )}
                     </div>
                 </div>
             </main>
+
+            {/* Media Pickers */}
+            <MediaPicker
+                isOpen={showImagePicker}
+                onClose={() => setShowImagePicker(false)}
+                onSelect={(url) => setProduct({ ...product, image: url })}
+                type="image"
+            />
+            <MediaPicker
+                isOpen={showGalleryPicker}
+                onClose={() => setShowGalleryPicker(false)}
+                onSelect={() => {}}
+                onSelectMultiple={(urls) => setProduct({ ...product, gallery: [...(product.gallery || []), ...urls] })}
+                type="image"
+                multiple
+            />
+            <MediaPicker
+                isOpen={showVideoPicker}
+                onClose={() => setShowVideoPicker(false)}
+                onSelect={(url) => setProduct({ ...product, video_url: url })}
+                type="video"
+            />
         </div>
     );
 }
