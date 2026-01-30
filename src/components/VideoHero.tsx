@@ -12,13 +12,13 @@ export default function VideoHero() {
                 loop
                 muted
                 playsInline
-                className="absolute top-0 left-0 w-full h-full object-cover opacity-60"
+                className="absolute top-0 left-0 w-full h-full object-contain opacity-90"
             >
                 <source src="/videos/hero.mp4?v=2" type="video/mp4" />
             </video>
 
             {/* Overlay Content */}
-            <div className="relative z-10 w-full h-full flex flex-col items-center justify-end text-center text-white px-4 pb-32">
+            <div className="relative z-10 w-full h-full flex flex-col items-center justify-center text-center text-white px-4">
                 {/* Text Removed */}
 
                 <motion.div
