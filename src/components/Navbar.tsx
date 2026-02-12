@@ -42,6 +42,9 @@ export default function Navbar() {
                     <Link href="/#shop" className="text-sm uppercase tracking-widest hover:text-gray-300 transition-colors">
                         Shop
                     </Link>
+                    <Link href="/videos" className="text-sm uppercase tracking-widest hover:text-gray-300 transition-colors">
+                        Videos
+                    </Link>
                     <button onClick={openCart} className="relative group">
                         <ShoppingBag className="w-6 h-6" />
                         {cartCount > 0 && (

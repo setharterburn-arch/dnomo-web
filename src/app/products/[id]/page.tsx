@@ -65,9 +65,14 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                                 <video
                                     src={product.video_url}
                                     controls
-                                    className="w-full rounded-lg"
+                                    playsInline
+                                    preload="metadata"
+                                    className="w-full rounded-lg bg-black"
                                     poster={product.image || undefined}
-                                />
+                                >
+                                    <source src={product.video_url} type="video/mp4" />
+                                    Your browser does not support the video tag.
+                                </video>
                             </div>
                         )}
 

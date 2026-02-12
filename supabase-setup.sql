@@ -70,3 +70,24 @@ CREATE TRIGGER site_settings_updated_at
     BEFORE UPDATE ON site_settings
     FOR EACH ROW
     EXECUTE FUNCTION update_updated_at();
+
+-- Videos table for testimonials and demos
+CREATE TABLE IF NOT EXISTS videos (
+    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+    title TEXT NOT NULL,
+    description TEXT,
+    video_url TEXT NOT NULL,
+    thumbnail_url TEXT,
+    category TEXT DEFAULT 'testimonial' CHECK (category IN ('testimonial', 'demo', 'review')),
+    sort_order INTEGER DEFAULT 0,
+    active BOOLEAN DEFAULT true,
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Enable RLS
+ALTER TABLE videos ENABLE ROW LEVEL SECURITY;
+
+-- Public read access
+CREATE POLICY "Public can read active videos" ON videos
+    FOR SELECT USING (active = true);
