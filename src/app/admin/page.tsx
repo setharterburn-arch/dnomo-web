@@ -3,8 +3,9 @@
 import { useAdmin } from '@/context/AdminContext';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Package, Plus, LogOut, Edit, Trash2, Eye, EyeOff, Image } from 'lucide-react';
+import { Package, Plus, LogOut, Edit, Trash2, Eye, EyeOff, Image, Video } from 'lucide-react';
 import MediaManager from '@/components/admin/MediaManager';
+import VideoManager from '@/components/admin/VideoManager';
 
 interface Product {
     id: string;
@@ -23,7 +24,7 @@ export default function AdminPage() {
     const [loginLoading, setLoginLoading] = useState(false);
     const [products, setProducts] = useState<Product[]>([]);
     const [productsLoading, setProductsLoading] = useState(true);
-    const [activeTab, setActiveTab] = useState<'products' | 'media'>('products');
+    const [activeTab, setActiveTab] = useState<'products' | 'media' | 'videos'>('products');
 
     useEffect(() => {
         if (isAuthenticated) {
@@ -183,10 +184,23 @@ export default function AdminPage() {
                         <Image className="w-5 h-5" />
                         Media Library
                     </button>
+                    <button
+                        onClick={() => setActiveTab('videos')}
+                        className={`flex items-center gap-2 px-4 py-3 font-bold transition-colors border-b-2 -mb-px ${
+                            activeTab === 'videos'
+                                ? 'text-black border-black'
+                                : 'text-gray-500 border-transparent hover:text-gray-700'
+                        }`}
+                    >
+                        <Video className="w-5 h-5" />
+                        Videos
+                    </button>
                 </div>
 
                 {activeTab === 'media' ? (
                     <MediaManager />
+                ) : activeTab === 'videos' ? (
+                    <VideoManager />
                 ) : (
                 <>
                 <div className="flex justify-between items-center mb-8">
