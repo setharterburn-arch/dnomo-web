@@ -67,16 +67,6 @@ export default function Footer() {
                             </div>
                         </div>
 
-                        {/* Promo Code */}
-                        <div className="bg-black/30 rounded-lg p-3 inline-block">
-                            <div className="flex items-center gap-2">
-                                <span className="text-[#40E0D0]">🏷️</span>
-                                <div>
-                                    <p className="text-[#40E0D0] text-sm font-semibold">33% OFF CODE</p>
-                                    <p className="font-bold">LHCEMBAK</p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                     {/* Quick Links */}
