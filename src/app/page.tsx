@@ -1,5 +1,6 @@
 import VideoHero from '@/components/VideoHero';
 import ProductGrid from '@/components/ProductGrid';
+import Reviews from '@/components/Reviews';
 import { getAllProducts } from '@/lib/products';
 
 export const revalidate = 60; // Revalidate every 60 seconds
@@ -45,6 +46,9 @@ export default async function Home() {
                     </div>
                 </div>
             </section>
+
+            {/* Customer Reviews */}
+            <Reviews />
         </div>
     );
 }
