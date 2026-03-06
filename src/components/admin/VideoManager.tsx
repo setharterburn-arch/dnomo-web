@@ -364,6 +364,7 @@ export default function VideoManager() {
             {/* Media Picker Modal */}
             {showMediaPicker && (
                 <MediaPicker
+                    isOpen={!!showMediaPicker}
                     onSelect={(url) => {
                         if (showMediaPicker === 'video') {
                             setEditingVideo({ ...editingVideo, video_url: url });
