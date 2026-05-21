@@ -26,7 +26,7 @@ export default function ContactPage() {
     const body = encodeURIComponent(
       `Name: ${formData.name}\nPhone: ${formData.phone}\nEmail: ${formData.email}\nAddress: ${formData.address}, ${formData.city}, ${formData.state} ${formData.zip}, ${formData.country}\n\nMessage:\n${formData.message}`
     )
-    window.location.href = `mailto:Alfredsconnection@gmail.com?subject=${subject}&body=${body}`
+    window.location.href = `mailto:dnomousa@gmail.com?subject=${subject}&body=${body}`
   }
 
   return (
@@ -136,7 +136,7 @@ export default function ContactPage() {
               <h2 className="text-2xl font-bold text-white mb-4">Thank You!</h2>
               <p className="text-gray-400 mb-6">Your email client should open with your message. If not, please email us directly.</p>
               <a 
-                href="mailto:Alfredsconnection@gmail.com" 
+                href="mailto:dnomousa@gmail.com" 
                 className="inline-block bg-[#40E0D0] text-black font-semibold px-8 py-3 rounded-full hover:bg-[#3BC9BB] transition-colors"
               >
                 Email Us Directly
@@ -157,8 +157,8 @@ export default function ContactPage() {
               <div className="space-y-6">
                 <div>
                   <p className="text-gray-600 mb-1">Email:</p>
-                  <a href="mailto:Alfredsconnection@gmail.com" className="text-[#40E0D0] font-semibold text-lg hover:underline">
-                    Alfredsconnection@gmail.com
+                  <a href="mailto:dnomousa@gmail.com" className="text-[#40E0D0] font-semibold text-lg hover:underline">
+                    dnomousa@gmail.com
                   </a>
                 </div>
 
@@ -213,7 +213,7 @@ export default function ContactPage() {
             Email us anytime and we'll get back to you within 24-48 hours.
           </p>
           <a 
-            href="mailto:Alfredsconnection@gmail.com" 
+            href="mailto:dnomousa@gmail.com" 
             className="inline-block bg-[#40E0D0] text-black font-bold px-10 py-4 rounded-full text-lg hover:bg-[#3BC9BB] transition-colors"
           >
             Email Us
