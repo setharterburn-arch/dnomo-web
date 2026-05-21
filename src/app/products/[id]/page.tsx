@@ -49,7 +49,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                         <h1 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-4 leading-tight">
                             {product.name}
                         </h1>
-                        <p className="text-2xl md:text-3xl font-light text-gray-600 mb-8">
+                        <p className="text-2xl md:text-3xl font-light text-gray-900 mb-8">
                             ${product.price.toFixed(2)}
                         </p>
 

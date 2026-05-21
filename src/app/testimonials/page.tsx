@@ -142,7 +142,7 @@ export default function TestimonialsPage() {
               ))}
             </div>
             <span className="text-3xl font-bold">{averageRating}</span>
-            <span className="text-gray-400">({reviews.length} reviews)</span>
+            <span className="text-gray-600">({reviews.length} reviews)</span>
           </div>
         </div>
       </div>
@@ -166,7 +166,7 @@ export default function TestimonialsPage() {
                 </p>
                 <div className="flex items-center justify-between">
                   <p className="font-semibold">— {review.author}</p>
-                  <p className="text-sm text-gray-500">{review.date}</p>
+                  <p className="text-sm text-gray-700">{review.date}</p>
                 </div>
               </div>
             ))}

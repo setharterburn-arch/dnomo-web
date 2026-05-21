@@ -134,7 +134,7 @@ export default function ContactPage() {
             <div className="text-center py-12">
               <div className="text-6xl mb-4">✉️</div>
               <h2 className="text-2xl font-bold text-white mb-4">Thank You!</h2>
-              <p className="text-gray-400 mb-6">Your email client should open with your message. If not, please email us directly.</p>
+              <p className="text-gray-600 mb-6">Your email client should open with your message. If not, please email us directly.</p>
               <a 
                 href="mailto:dnomousa@gmail.com" 
                 className="inline-block bg-[#40E0D0] text-black font-semibold px-8 py-3 rounded-full hover:bg-[#3BC9BB] transition-colors"
@@ -209,7 +209,7 @@ export default function ContactPage() {
       <div className="bg-black text-white py-16">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold mb-6">Questions? We're Here to Help!</h2>
-          <p className="text-gray-400 mb-8">
+          <p className="text-gray-600 mb-8">
             Email us anytime and we'll get back to you within 24-48 hours.
           </p>
           <a 
