@@ -1,26 +1,29 @@
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
-import { Resend } from 'resend';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
-  typescript: true,
-});
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+function getResend() {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) return null;
+  const { Resend } = require('resend');
+  return new Resend(apiKey);
+}
 
 export async function POST(req: Request) {
   try {
+    const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+    const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+    
+    if (!stripeSecretKey || !webhookSecret) {
+      console.error('Missing Stripe configuration');
+      return new NextResponse('Stripe not configured', { status: 500 });
+    }
+
+    const stripe = new Stripe(stripeSecretKey, { typescript: true });
     const body = await req.text();
     const signature = req.headers.get('stripe-signature');
     
     if (!signature) {
       return new NextResponse('No signature', { status: 400 });
-    }
-
-    const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
-    if (!webhookSecret) {
-      console.error('Missing STRIPE_WEBHOOK_SECRET');
-      return new NextResponse('Webhook secret not configured', { status: 500 });
     }
 
     const event = stripe.webhooks.constructEvent(body, signature, webhookSecret);
@@ -33,25 +36,30 @@ export async function POST(req: Request) {
       const amountTotal = session.amount_total ? (session.amount_total / 100).toFixed(2) : '0.00';
       const sessionId = session.id;
 
-      // Send email notification
-      const { data, error } = await resend.emails.send({
-        from: 'DNOMO <onboarding@resend.dev>',
-        to: ['alfred@alfredsconnection.com'],
-        subject: `New Order! - $${amountTotal} - ${customerName}`,
-        html: `
-          <h1>New DNOMO Order</h1>
-          <p><strong>Customer:</strong> ${customerName}</p>
-          <p><strong>Email:</strong> ${customerEmail}</p>
-          <p><strong>Amount:</strong> $${amountTotal}</p>
-          <p><strong>Session ID:</strong> ${sessionId}</p>
-          <p>Login to Stripe to view full order details.</p>
-        `,
-      });
+      // Send email notification via Resend
+      const resend = getResend();
+      if (resend) {
+        const { data, error } = await resend.emails.send({
+          from: 'DNOMO <onboarding@resend.dev>',
+          to: ['alfred@alfredsconnection.com'],
+          subject: `New Order! - $${amountTotal} - ${customerName}`,
+          html: `
+            <h1>New DNOMO Order</h1>
+            <p><strong>Customer:</strong> ${customerName}</p>
+            <p><strong>Email:</strong> ${customerEmail}</p>
+            <p><strong>Amount:</strong> $${amountTotal}</p>
+            <p><strong>Session ID:</strong> ${sessionId}</p>
+            <p>Login to Stripe to view full order details.</p>
+          `,
+        });
 
-      if (error) {
-        console.error('Failed to send email:', error);
+        if (error) {
+          console.error('Failed to send email:', error);
+        } else {
+          console.log('Order notification sent:', data?.id);
+        }
       } else {
-        console.log('Order notification sent:', data?.id);
+        console.log('Resend not configured, skipping email notification');
       }
     }
 
